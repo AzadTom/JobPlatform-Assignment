@@ -68,7 +68,7 @@ const Input = ({id,title,content}) => {
 
     const removeItem = (item) => {
 
-        dispatch(removeFilter(item));
+        dispatch(removeFilter(item.toLowerCase()));
         setSelectedItem((prev) => prev.filter((it) => it !== item));
         setSuggestion((prev) => [...prev, item]);
     }

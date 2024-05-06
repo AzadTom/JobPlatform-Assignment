@@ -22,6 +22,8 @@ const jobsSlice = createSlice({
 
            state.filter = state.filter.filter((item)=> item.toLowerCase() !== action.payload) 
 
+            console.log(state.filter);
+            
            if(state.filter.length===0){
 
             state.displaydata = state.data;
@@ -43,7 +45,7 @@ const jobsSlice = createSlice({
             state.displaydata = state.data;
             return;
         }
-        
+
 
            state.displaydata = state.data.filter(item=>{
 
