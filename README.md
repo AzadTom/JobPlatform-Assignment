@@ -8,7 +8,7 @@ Checkout online [Livelink](https://www.google.com)
 ## Features
 * Responsive
 * Infinite Scrolling
-* Filters
+* Filters (JobRole,Location,minExp,companyName , Remote/inOffice)
 
 ## How to run the projects
 
