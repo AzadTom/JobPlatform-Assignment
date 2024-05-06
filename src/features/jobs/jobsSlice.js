@@ -8,13 +8,27 @@ const  JOB_PER_PAGE = 9;
 const initialState ={
     loading:false,
     data :[],
+    displaydata:[],
+    filter:""
 }
 
 
 const jobsSlice = createSlice({
     name:"jobs",
     initialState,
-    reducers:{},
+    reducers:{
+
+        getFilter:(state,action)=>{
+
+           state.filter = action.payload;
+           
+           state.displaydata = state.data.filter(item=>
+             item.companyName.toLowerCase().includes(state.filter.toLowerCase())
+           );
+
+        }
+
+    },
     extraReducers:(builder)=>{
 
     
@@ -25,12 +39,18 @@ const jobsSlice = createSlice({
         .addCase(getJobsData.fulfilled,(state,action)=>{
 
             state.data = [...state.data,...action.payload];
+            state.displaydata = state.data.filter(item=>
+                item.jobRole.toLowerCase().includes(state.filter.toLowerCase())
+              );
             state.loading = false;
         })
         
 
     }
 }) 
+
+
+export const {getFilter} = jobsSlice.actions;
 
 
 export default jobsSlice.reducer;

@@ -4,7 +4,7 @@ import styles from './jobcard.module.css';
 
 function JobCard(props) {
 
-  const {logoUrl,jobRole,companyName,location,jobDetailsFromCompany,minExp=0,jdLink} = props;  
+  const {logoUrl,jobRole,companyName,location,jobDetailsFromCompany,minExp,jdLink} = props;  
 
 
   return (
@@ -30,7 +30,7 @@ function JobCard(props) {
 
     <div  className={styles.experienceContainer}>
         <p>Minimum Experience</p>
-        <span className={styles.experience}> <span>{minExp}</span> <span>Years</span></span>
+        <span className={styles.experience}> <span>{minExp===null ? 0 : minExp}</span> <span>Years</span></span>
     </div>
      <button className={styles.easyApply}><a href={jdLink}>Easy Apply</a></button>
     </div>

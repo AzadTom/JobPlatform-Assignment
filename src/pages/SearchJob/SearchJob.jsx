@@ -4,13 +4,14 @@ import JobCard from '../../components/JobCard/JobCard';
 import Loading from '../../components/Loading/Loading';
 import styles from './searchjob.module.css';
 import { useSelector ,useDispatch} from 'react-redux';
-import { getJobsData } from '../../features/jobs/jobsSlice';
+import { getJobsData} from '../../features/jobs/jobsSlice';
 import Input from '../../components/Input/Input';
 
 
 
 
-const filters = [{
+
+const filterOption = [{
    id:1,
    title:"Roles",
    data:["FrontEnd", "BackEnd", "Android", "IOS", "Flutter", "ReactNative", "FullStack"]
@@ -54,11 +55,9 @@ function SearchJob() {
   
     const dispatch = useDispatch();
     const[offSet,setOffSet] = useState(1);
-    const {loading , data}  = useSelector((state)=> state.jobs);
+    const {data,displaydata,loading}  = useSelector((state)=> state.jobs);
 
-    const[filterOption,setFilterOption]= useState(filters);
-  
-
+   
    
     useEffect(()=>{
 
@@ -90,10 +89,6 @@ function SearchJob() {
 
     },[])
 
-
-
-
-
     return (
         <>
         <div className={styles.parentContainer}>
@@ -107,9 +102,12 @@ function SearchJob() {
           {filterOption.map((item)=>(<Input title={item.title} content={item.data} id={item.id} key={item.title}/>))}
         </div>
         
-        <div className={styles.jobContainer}>
-        {data && data?.map((job)=>( <JobCard  {...job} key={job.jdUid}/>))}
-        </div>
+        
+
+         <div className={styles.jobContainer}>
+         {displaydata && displaydata.map((job)=>( <JobCard  {...job} key={job.jdUid}/>))}
+         </div>
+
         {loading && <Loading/>}
 
         </div>
