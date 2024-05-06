@@ -31,6 +31,12 @@ const jobsSlice = createSlice({
 
            state.displaydata = state.data.filter(item=>{
 
+
+             if(state.filter.length === 0)
+                    {
+                         return true;
+                    }
+
             // jobRole
             if(state.filter.length> 0 && state.filter.includes(item.jobRole.toLowerCase()) )
                 {
@@ -62,11 +68,7 @@ const jobsSlice = createSlice({
                                  return true;
                             } 
 
-                
-                if(state.filter.length === 0)
-                {
-                     return true;
-                }
+              
 
         })
 
@@ -88,6 +90,12 @@ const jobsSlice = createSlice({
 
             state.data = [...state.data,...action.payload];
             state.displaydata = state.data.filter(item=>{
+
+
+                 if(state.filter.length === 0)
+                    {
+                         return true;
+                    }
 
                 // jobRole
                 if(state.filter.length> 0 && state.filter.includes(item.jobRole.toLowerCase()) )
@@ -121,10 +129,7 @@ const jobsSlice = createSlice({
                             } 
 
                     
-                    if(state.filter.length === 0)
-                    {
-                         return true;
-                    }
+                   
 
             })
 
