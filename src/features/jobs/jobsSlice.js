@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
-const  JOB_PER_PAGE = 9;
+const  JOB_PER_PAGE = 10;
 
 
 
@@ -9,7 +9,7 @@ const initialState ={
     loading:false,
     data :[],
     displaydata:[],
-    filter:""
+    filter:[]
 }
 
 
@@ -18,13 +18,58 @@ const jobsSlice = createSlice({
     initialState,
     reducers:{
 
+        removeFilter:(state,action)=>{
+
+           state.filter = state.filter.filter((item)=> item.toLowerCase() !== action.payload) 
+
+        },
         getFilter:(state,action)=>{
 
-           state.filter = action.payload;
+           state.filter = [...state.filter,action.payload];
            
-           state.displaydata = state.data.filter(item=>
-             item.companyName.toLowerCase().includes(state.filter.toLowerCase())
-           );
+
+
+           state.displaydata = state.data.filter(item=>{
+
+            // jobRole
+            if(state.filter.length> 0 && state.filter.includes(item.jobRole.toLowerCase()) )
+                {
+                     return true;
+                }
+
+                // CompnayNAme
+                if(state.filter.length> 0 && state.filter.includes(item.companyName.toLowerCase()) )
+                    {
+                         return true;
+                    }
+
+                    //minExp
+
+                    if(state.filter.length> 0 && state.filter.includes(parseInt(item.minExp)) )
+                        {
+                             return true;
+                        }  
+                        
+                        //Remote/in-office
+                        if(state.filter.length> 0 && state.filter.includes(item.location.toLowerCase()))
+                            {
+                                 return true;
+                            } 
+
+                             //Remote/in-office
+                        if(state.filter.length> 0 && state.filter.includes("in-office"))
+                            {
+                                 return true;
+                            } 
+
+                
+                if(state.filter.length === 0)
+                {
+                     return true;
+                }
+
+        })
+
 
         }
 
@@ -38,10 +83,51 @@ const jobsSlice = createSlice({
         })
         .addCase(getJobsData.fulfilled,(state,action)=>{
 
+
+           
+
             state.data = [...state.data,...action.payload];
-            state.displaydata = state.data.filter(item=>
-                item.jobRole.toLowerCase().includes(state.filter.toLowerCase())
-              );
+            state.displaydata = state.data.filter(item=>{
+
+                // jobRole
+                if(state.filter.length> 0 && state.filter.includes(item.jobRole.toLowerCase()) )
+                    {
+                         return true;
+                    }
+
+                    // CompnayNAme
+                    if(state.filter.length> 0 && state.filter.includes(item.companyName.toLowerCase()) )
+                        {
+                             return true;
+                        }
+
+                        //minExp
+
+                        if(state.filter.length> 0 && state.filter.includes(parseInt(item.minExp)) )
+                            {
+                                 return true;
+                            }  
+                            
+                            //Remote/in-office
+                            if(state.filter.length> 0 && state.filter.includes(item.location.toLowerCase()))
+                                {
+                                     return true;
+                                } 
+
+                                    //Remote/in-office
+                        if(state.filter.length> 0 && state.filter.includes("in-office"))
+                            {
+                                 return true;
+                            } 
+
+                    
+                    if(state.filter.length === 0)
+                    {
+                         return true;
+                    }
+
+            })
+
             state.loading = false;
         })
         
@@ -50,7 +136,7 @@ const jobsSlice = createSlice({
 }) 
 
 
-export const {getFilter} = jobsSlice.actions;
+export const {removeFilter,getFilter} = jobsSlice.actions;
 
 
 export default jobsSlice.reducer;

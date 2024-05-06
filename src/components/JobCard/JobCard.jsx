@@ -29,8 +29,8 @@ function JobCard(props) {
     </div>  
 
     <div  className={styles.experienceContainer}>
-        <p>Minimum Experience</p>
-        <span className={styles.experience}> <span>{minExp===null ? 0 : minExp}</span> <span>Years</span></span>
+        <p>{minExp !== null ? "Minimum Experience":""}</p>
+        <span className={styles.experience}> <span>{minExp===null ? "" : minExp}</span> <span>{minExp !== null  ? "Years":" "}</span></span>
     </div>
      <button className={styles.easyApply}><a href={jdLink}>Easy Apply</a></button>
     </div>

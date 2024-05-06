@@ -2,8 +2,8 @@ import styles from './input.module.css';
 
 
 import { useEffect, useRef, useState } from "react";
-import { getFilter } from '../../features/jobs/jobsSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { getFilter, removeFilter } from '../../features/jobs/jobsSlice';
+import { useDispatch } from 'react-redux';
 
 const Input = ({id,title,content}) => {
 
@@ -21,6 +21,10 @@ const Input = ({id,title,content}) => {
     const dispatch = useDispatch();
 
 
+
+    
+
+
     useEffect(() => {
 
         if (searchTerm.trim() == "") {
@@ -30,8 +34,7 @@ const Input = ({id,title,content}) => {
 
         }
 
-       
-
+        
         const data = suggestion.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
         setSuggestion(data);
 
@@ -55,7 +58,7 @@ const Input = ({id,title,content}) => {
 
     const addToList = (item) => {
 
-        dispatch(getFilter(item));
+        dispatch(getFilter(item.toLowerCase()));
         setSelectedItem((prev) => [...prev, item]);
         const data = suggestion.filter((data) => data !== item);
         setSuggestion(data);
@@ -65,7 +68,7 @@ const Input = ({id,title,content}) => {
 
     const removeItem = (item) => {
 
-        dispatch(getFilter(""));
+        dispatch(removeFilter(item));
         setSelectedItem((prev) => prev.filter((it) => it !== item));
         setSuggestion((prev) => [...prev, item]);
     }
@@ -114,7 +117,10 @@ const Input = ({id,title,content}) => {
                     <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" className="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
                 </div>
                 <div className={open && minExpBasePay ? styles.list : ""} >
-                    {open && minExpBasePay && minExpBasePay.map((item, index) => <p className={index == activeSuggestion ? `${styles.active} ${styles.listItem}` : `${styles.listItem}`} onClick={() => setSearchTerm(item)}>{item}</p>)}
+                    {open && minExpBasePay && minExpBasePay.map((item, index) => <p className={index == activeSuggestion ? `${styles.active} ${styles.listItem}` : `${styles.listItem}`} onClick={() => {
+                        setSearchTerm(item)
+                        dispatch(getFilter(parseInt(item)))
+                    }}>{item}</p>)}
                 </div>
             </div>
         </div>
@@ -135,7 +141,7 @@ const Input = ({id,title,content}) => {
             <div className={styles.containerList}>
             <input type="text" value={searchTerm} onChange={(e) => {
                 setSearchTerm(e.target.value)
-                dispatch(getFilter(e.target.value))
+                dispatch(getFilter(e.target.value.toLowerCase()))
             }} placeholder={selectedItem.length > 0 ? "" : `Search ${title}`} ref={inputRef} onKeyDown={handleKeyDown} />
             </div>
         </div>

@@ -44,6 +44,16 @@ const filterOption = [{
    id:6,
    title:"Comapany Name",
    data:["amazon","mitra","flipkart","meesho"]
+},
+{
+   id:7,
+   title:"Tech stack",
+   data:["Javascript","kotlin","java","TypeScript","React","NextJs","NestJs","Rust","Go"]
+},{
+
+   id:8,
+   title:"Location",
+   data:["Delhi Ncr","Mumbai","Chennai","Bangalore",""]
 }
 ];
 
@@ -61,7 +71,7 @@ function SearchJob() {
    
     useEffect(()=>{
 
-     dispatch(getJobsData({offSet}));
+      dispatch(getJobsData({offSet}));
 
     },[offSet])
 
