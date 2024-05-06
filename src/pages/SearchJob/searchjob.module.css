@@ -1,0 +1,87 @@
+.logo{
+
+    width: 120px;
+    
+}
+
+.searchJobs{
+
+    text-align: center;
+   
+}
+
+.searchJobs span{
+    
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid blue;
+}
+
+
+.parentContainer {
+
+
+    max-width: 1024px;
+    margin-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
+
+    
+    
+}
+
+.inputParentContainer{
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.6rem;
+
+   
+}
+
+
+.inputContainer input{
+
+
+    padding: 10px 20px;
+}
+
+
+.jobContainer{
+
+   
+
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+ 
+    gap: 1.2rem;
+
+}
+
+
+
+@media screen and (min-width:600px)
+{
+    .jobContainer{
+
+        grid-template-columns: repeat(2,1fr);
+    }
+
+
+}
+@media screen and (min-width:768px)
+{
+    .jobContainer{
+
+        
+        grid-template-columns: repeat(3,1fr);
+    }
+
+
+}
+
+

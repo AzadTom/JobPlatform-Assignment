@@ -1,0 +1,111 @@
+input{
+    border: none;
+    outline: none;
+    font-size: 12px;
+}
+
+input::placeholder{
+
+    color: gainsboro;
+}
+
+.inputTitle{
+
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+
+
+
+.containerList{
+
+    position: relative;
+    padding: 8px 16px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+   
+
+
+
+}
+
+
+.list{
+
+    position: absolute;
+    z-index: 999;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    overflow-y: scroll;
+    background-color: white;
+    padding: 1.2rem; 
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.listItem{
+
+    padding: 10px 12px;
+}
+
+.listItem:hover{
+
+    background-color: rgb(199, 240, 240);
+   
+}
+
+.active{
+
+    background-color: rgb(199, 240, 240);
+}
+
+.filterItem{
+
+    background-color: gainsboro;
+    color: black;
+    font-size: 12px;
+    padding: 2px;
+
+    display:flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+
+
+.filterItem svg:hover{
+
+    background-color: rgb(235, 140, 159);
+    fill: crimson;
+}
+
+.showAll{
+
+    display: flex;
+    align-items: center;
+}
+
+.showAll svg{
+
+    fill: gray;
+}
+
+.showAll .leftBar{
+
+    width: 1.2px;
+    height: 24px;
+    margin:0 16px;
+    background-color: gainsboro;
+}

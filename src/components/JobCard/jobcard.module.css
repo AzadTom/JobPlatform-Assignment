@@ -1,0 +1,129 @@
+
+.card{
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px !important;
+    /* max-width: 360px; */
+    overflow: hidden;
+    border-radius: 20px !important;
+    padding: 1.2rem;
+
+
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+
+}
+
+
+
+.logoContainer{
+
+    width: 42px;
+    height: 42px;
+
+
+}
+
+
+.logoContainer img{
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+
+}
+
+
+.cardHeader{
+
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.jobRole{
+
+    text-transform: capitalize;
+}
+
+.location{
+
+    color: gray;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+
+.cardHeaderContent{
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.jobDescription{
+
+    font-size: 14px;
+    color: gray;
+
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.jobDescription .descriptionTitle{
+
+    color: black;
+
+}
+
+
+
+.experienceContainer{
+
+    color: gray;
+}
+.experience{
+
+    display: flex;
+    gap: 0.2rem;
+}
+
+
+
+
+.showMore{
+
+    color: blue;
+    text-align: center;
+   
+}
+
+
+.easyApply{
+
+    width: 100%;
+    background-color: rgb(85, 239, 196);
+    color: black;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 8px;
+    margin: 5px 0;
+    border: none;
+
+    font-size: 14px;
+    
+}
+
+.easyApply a{
+
+    text-decoration: none;
+    color: black;
+}
+
+
